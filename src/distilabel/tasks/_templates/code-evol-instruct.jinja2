@@ -1,0 +1,209 @@
+{%- if evol_method == "breadth" -%}
+I want you to act as a Prompt Creator.
+Your goal is to draw inspiration from the #Given Prompt# to create a brand new prompt.
+This new prompt should belong to the same domain as the #Given Prompt# but must be even more rare.
+The LENGTH and complexity of the #Created Prompt# should be similar to that of the #Given Prompt#.
+The #Created Prompt# must be reasonable and must be understood and responded by humans.
+'#Given Prompt#', '#Created Prompt#', 'given prompt' and 'created prompt' are not allowed to appear in #Created Prompt#
+#Given Prompt#:
+{{ instruction }}
+#Created Prompt#:
+{% else %}{%- if evol_method == "constraints" -%}
+{% set depth_rewriter = "Please add one more constraints/requirements into #The Given Prompt#" %}
+{%- elif evol_method == "deepen" -%}
+{% set depth_rewriter = "If #The Given Prompt# contains inquiries about certain issues, the depth and breadth of the inquiry can be increased." %}
+{%- elif evol_method == "concretizing" -%}
+{% set depth_rewriter = "Please replace general concepts with more specific concepts." %}
+{%- elif evol_method == "reasoning" -%}
+{% set depth_rewriter = "If #The Given Prompt# can be solved with just a few simple thinking processes, you can rewrite it to explicitly request multiple-step reasoning." %}
+{%- elif evol_method == "clean_code_principles" -%}
+{% set depth_rewriter = "The task should necessitate solutions that are easy to read, straightforward, and neatly organized, emphasizing Clean Code principles." %}
+{%- elif evol_method == "SOLID_principles" -%}
+{% set depth_rewriter = "Adapt the original challenge to enforce SOLID principles of object-oriented design, promoting modular, flexible, and maintainable code." %}
+{%- elif evol_method == "TDD" -%}
+{% set depth_rewriter = "Transform the task to follow a Test-Driven Development approach, prioritizing test creation before solution implementation." %}
+{%- elif evol_method == "refactoring" -%}
+{% set depth_rewriter = "Require the refactoring of a provided piece of code for better readability, performance, or scalability, emphasizing code quality improvement." %}
+{%- elif evol_method == "agile_methodologies" -%}
+{% set depth_rewriter = "Break down the task into smaller, manageable pieces suitable for an agile sprint, reflecting iterative and incremental development." %}
+{%- elif evol_method == "pair_programming" -%}
+{% set depth_rewriter = "Suggest approaching the task using pair programming techniques to enhance collaborative problem solving and code quality." %}
+{%- elif evol_method == "CI_CD" -%}
+{% set depth_rewriter = "Expand the task to include elements of Continuous Integration/Continuous Deployment, highlighting the importance of automation." %}
+{%- elif evol_method == "software_craftsmanship" -%}
+{% set depth_rewriter = "Emphasize the ethos of software craftsmanship, focusing on writing elegant code and taking pride in one's work beyond meeting technical requirements." %}
+{%- elif evol_method == "design_patterns" -%}
+{% set depth_rewriter = "Require the use of specific design patterns in the solution, demonstrating common solutions to recurring design problems." %}
+{%- elif evol_method == "code_smells_and_refactoring" -%}
+{% set depth_rewriter = "Identify and fix code smells in a given codebase, teaching the importance of recognizing and addressing poor design choices." %}
+{%- elif evol_method == "dependency_inversion" -%}
+{% set depth_rewriter = "Highlight the Dependency Inversion Principle by requiring solutions that demonstrate decoupling through inverted dependencies." %}
+{%- elif evol_method == "encapsulation_and_modularity" -%}
+{% set depth_rewriter = "Require strong encapsulation and modularity in solutions, promoting simpler, more reusable code through well-defined interfaces." %}
+{%- elif evol_method == "immutability" -%}
+{% set depth_rewriter = "Focus on creating solutions that leverage immutability, promoting safer and more predictable code by preventing data modification after creation." %}
+{%- elif evol_method == "functional_programming" -%}
+{% set depth_rewriter = "Require a functional programming approach to the task, solving problems using pure functions, higher-order functions, or immutability." %}
+{%- elif evol_method == "clean_architecture" -%}
+{% set depth_rewriter = "Incorporate Clean Architecture principles, designing solutions that separate concerns for independence from frameworks, UI, and external agencies." %}
+{%- elif evol_method == "code_simplicity" -%}
+{% set depth_rewriter = "Prioritize code simplicity in the task, challenging developers to accomplish requirements with minimal complexity." %}
+{%- elif evol_method == "DDD" -%}
+{% set depth_rewriter = "Reflect Domain-Driven Design principles by structuring solutions around the business domain, using ubiquitous language for effective problem-solving." %}
+{%- elif evol_method == "unit_testing" -%}
+{% set depth_rewriter = "Expand the task to include comprehensive unit testing, emphasizing test coverage and the role of testing in ensuring code functionality." %}
+{%- elif evol_method == "clean_UI_design" -%}
+{% set depth_rewriter = "Achieve a clean user interface design, creating interfaces that are functional, intuitive, and aesthetically pleasing." %}
+{%- elif evol_method == "scalability" -%}
+{% set depth_rewriter = "Emphasize scalability in solutions, ensuring they are capable of handling increased workloads or can be enlarged to accommodate growth." %}
+{%- elif evol_method == "performance_optimization" -%}
+{% set depth_rewriter = "Focus on performance optimization, identifying bottlenecks and optimizing code for better performance through algorithmic improvements or efficient resource usage." %}
+{%- elif evol_method == "understand_the_problem" -%}
+{% set depth_rewriter = "Begin the task by requiring a thorough understanding of the problem. Encourage articulating the problem in different ways to ensure clarity of objectives before attempting a solution." %}
+{%- elif evol_method == "devise_a_plan" -%}
+{% set depth_rewriter = "Modify the task to include devising a plan. This involves brainstorming various strategies to tackle the problem, comparing their potential effectiveness before implementation." %}
+{%- elif evol_method == "carry_out_the_plan" -%}
+{% set depth_rewriter = "Expand the task to emphasize the execution of the plan. This phase should focus on implementing the chosen strategy with attention to detail and precision." %}
+{%- elif evol_method == "review_and_extend" -%}
+{% set depth_rewriter = "Adjust the task to include a review phase after a solution is found. Encourage reflection on the solution process and explore further questions or extensions of the problem." %}
+{%- elif evol_method == "analogy_in_problem_solving" -%}
+{% set depth_rewriter = "Incorporate the use of analogies to solve the task. Challenge participants to find and apply analogous situations or problems to devise creative solutions." %}
+{%- elif evol_method == "generalize_the_solution" -%}
+{% set depth_rewriter = "Revise the task to require generalization of the solution. Ask for ways the solution could be applied to a broader set of problems or in different contexts." %}
+{%- elif evol_method == "working_backwards" -%}
+{% set depth_rewriter = "Transform the task to involve working backwards from the desired outcome. This method is especially useful for complex or convoluted problems." %}
+{%- elif evol_method == "inductive_reasoning" -%}
+{% set depth_rewriter = "Expand the task to emphasize inductive reasoning, starting from specific instances or observations to formulate general principles or solutions." %}
+{%- elif evol_method == "deductive_reasoning" -%}
+{% set depth_rewriter = "Adjust the task to focus on deductive reasoning, applying general rules or principles to deduce specific outcomes or solutions." %}
+{%- elif evol_method == "divide_and_conquer" -%}
+{% set depth_rewriter = "Revise the task to apply a divide and conquer strategy, breaking the problem into smaller, more manageable parts before solving each part." %}
+{%- elif evol_method == "iterative_improvement" -%}
+{% set depth_rewriter = "Modify the task to include iterative improvement, encouraging continuous refinement and testing of the solution." %}
+{%- elif evol_method == "look_for_a_pattern" -%}
+{% set depth_rewriter = "Incorporate pattern recognition into the task. Encourage identifying repeating structures or sequences that can simplify the problem-solving process." %}
+{%- elif evol_method == "specialization" -%}
+{% set depth_rewriter = "Adjust the task to involve specialization, focusing on a particular case or aspect of the problem to gain insights into the solution." %}
+{%- elif evol_method == "experimentation" -%}
+{% set depth_rewriter = "Expand the task to encourage experimentation. Allow for trial and error in approaching the problem, learning from each attempt to find a viable solution." %}
+{%- elif evol_method == "visualization" -%}
+{% set depth_rewriter = "Revise the task to require visualization. This could involve diagramming the problem or solution to gain a clearer understanding of the task at hand." %}
+{%- elif evol_method == "reformulation" -%}
+{% set depth_rewriter = "Modify the task to include reformulation, encouraging a restatement of the problem in new terms to find alternative approaches to the solution." %}
+{%- elif evol_method == "simplification" -%}
+{% set depth_rewriter = "Adjust the task to emphasize simplification, breaking down the problem into its most basic elements to make the solution process more manageable." %}
+{%- elif evol_method == "analogy_with_known_solutions" -%}
+{% set depth_rewriter = "Incorporate analogies with known solutions to solve the task. Encourage leveraging familiar solutions from similar problems to inform the approach to the new task." %}
+{%- elif evol_method == "logical_analysis" -%}
+{% set depth_rewriter = "Expand the task to focus on logical analysis, systematically examining the problem's components and their relationships to structure the solution process." %}
+{%- elif evol_method == "sequential_reasoning" -%}
+{% set depth_rewriter = "Adjust the task to emphasize sequential reasoning, where the solution is reached through a series of logical steps that build on each other." %}
+{%- elif evol_method == "inversion" -%}
+{% set depth_rewriter = "Transform the task to utilize the concept of inversion, encouraging thinking about the problem in reverse or considering what conditions would lead to the opposite outcome." %}
+{%- elif evol_method == "combination_of_methods" -%}
+{% set depth_rewriter = "Modify the task to require a combination of methods for its solution. This encourages the integration of various problem-solving strategies, reflecting the complexity and multifaceted nature of real-world problems." %}
+{%- elif evol_method == "symmetry" -%}
+{% set depth_rewriter = "Incorporate the exploration of symmetry into the task. Challenge participants to identify symmetrical properties or patterns that may simplify the problem or offer insights into its solution." %}
+{%- elif evol_method == "recursion" -%}
+{% set depth_rewriter = "Expand the task to include the use of recursion, solving the problem by breaking it down into smaller instances of itself until a base case is reached." %}
+{%- elif evol_method == "constraint_identification_and_relaxation" -%}
+{% set depth_rewriter = "Adjust the task to focus on identifying and then relaxing constraints, allowing for a broader exploration of potential solutions by temporarily removing limitations." %}
+{%- elif evol_method == "proof_by_contradiction" -%}
+{% set depth_rewriter = "Revise the task to apply proof by contradiction, requiring the assumption that the opposite of the desired conclusion is true and showing this leads to a contradiction." %}
+{%- elif evol_method == "problem_decomposition" -%}
+{% set depth_rewriter = "Modify the task to emphasize problem decomposition, breaking the overall problem into a set of related but simpler sub-problems to be solved individually." %}
+{%- elif evol_method == "abstraction" -%}
+{% set depth_rewriter = "Incorporate the use of abstraction to solve the task, focusing on the essential details while ignoring those that are irrelevant to the current problem." %}
+{%- elif evol_method == "optimization" -%}
+{% set depth_rewriter = "Expand the task to include optimization, seeking not just any solution, but the best solution according to a defined set of criteria or constraints." %}
+{%- elif evol_method == "heuristic_development" -%}
+{% set depth_rewriter = "Adjust the task to encourage the development of heuristics, promoting the discovery of efficient methods or shortcuts to reach solutions more quickly." %}
+{%- elif evol_method == "modeling" -%}
+{% set depth_rewriter = "Revise the task to require modeling, representing the problem through diagrams, equations, or simulations to better understand and solve it." %}
+{%- elif method == "readability_focus" -%}
+{% set modification_guideline = "Enhance tasks to prioritize code readability, encouraging solutions that are easy to understand and maintain, reflecting Python's philosophy." %}
+{%- elif method == "simplification_through_pythonic_idioms" -%}
+{% set modification_guideline = "Require the use of Pythonic idioms and constructs to simplify complex problems, demonstrating the power of Python's expressive syntax." %}
+{%- elif method == "community_driven_development" -%}
+{% set modification_guideline = "Incorporate tasks that involve contributing to or engaging with open-source Python projects, fostering community-driven development." %}
+{%- elif method == "dynamic_typing_challenges" -%}
+{% set modification_guideline = "Design tasks that explore Python's dynamic typing system, challenging participants to write flexible and robust code." %}
+{%- elif method == "decorator_use_cases" -%}
+{% set modification_guideline = "Expand prompts to include the use of decorators, emphasizing their utility in extending function behavior without modifying the code." %}
+{%- elif method == "generator_explorations" -%}
+{% set modification_guideline = "Introduce problems solved using generators and iterators, highlighting efficient data processing with minimal memory usage." %}
+{%- elif method == "asyncio_for_concurrency" -%}
+{% set modification_guideline = "Create tasks requiring asyncio to handle asynchronous programming, showcasing Python's capabilities for concurrent execution." %}
+{%- elif method == "metaprogramming_and_reflection" -%}
+{% set modification_guideline = "Challenge solvers with metaprogramming and reflection tasks, exploring Python's dynamic nature and introspection capabilities." %}
+{%- elif method == "web_framework_integration" -%}
+{% set modification_guideline = "Incorporate the use of Python web frameworks (like Flask or Django) in tasks, emphasizing web development skills and MVC patterns." %}
+{%- elif method == "data_science_and_analysis" -%}
+{% set modification_guideline = "Expand tasks to involve data science and analysis using Python's libraries (Pandas, NumPy), stressing the importance of data manipulation and visualization." %}
+{%- elif method == "machine_learning_applications" -%}
+{% set modification_guideline = "Design prompts around machine learning projects using libraries like TensorFlow or scikit-learn, demonstrating Python's role in AI development." %}
+{%- elif method == "networking_with_sockets" -%}
+{% set modification_guideline = "Introduce networking tasks that utilize Python's socket programming, teaching basic client-server communication principles." %}
+{%- elif method == "multiprocessing_and_threading" -%}
+{% set modification_guideline = "Challenge participants to use multiprocessing and threading for parallel execution, optimizing performance in Python applications." %}
+{%- elif method == "package_development_and_distribution" -%}
+{% set modification_guideline = "Require the creation and distribution of a Python package, emphasizing knowledge of setuptools, pip, and PyPI." %}
+{%- elif method == "cython_for_performance" -%}
+{% set modification_guideline = "Expand tasks to include Cython for writing C extensions for Python, aiming to improve performance in computationally intensive tasks." %}
+{%- elif method == "unittest_for_python_testing" -%}
+{% set modification_guideline = "Incorporate unit testing using Python's unittest framework, promoting test-driven development practices." %}
+{%- elif method == "functional_programming_techniques" -%}
+{% set modification_guideline = "Design tasks that employ functional programming techniques in Python, such as using map, reduce, and filter functions." %}
+{%- elif method == "type_annotations_for_clarity" -%}
+{% set modification_guideline = "Introduce type annotations in tasks, encouraging clearer code documentation and facilitating static type checking." %}
+{%- elif method == "context_managers_for_resource_management" -%}
+{% set modification_guideline = "Require the use of context managers for efficient resource management, highlighting Python's with statement for resource allocation and cleanup." %}
+{%- elif method == "exploring_python_standard_library" -%}
+{% set modification_guideline = "Challenge solvers to utilize modules from Python's standard library, showcasing its comprehensive offerings for various tasks." %}
+{%- elif method == "pythonic_concurrency_with_async_await" -%}
+{% set modification_guideline = "Create prompts that leverage Python's async and await syntax for asynchronous programming, simplifying concurrency handling." %}
+{%- elif method == "specificity" -%}
+{% set modification_guideline = "Refine the given challenge by incorporating more precise and niche programming concepts or techniques, aiming to assess familiarity with advanced topics or lesser-known functionalities within a programming language or framework." %}
+{%- elif method == "integration" -%}
+{% set modification_guideline = "Enhance the original task by requiring the integration of multiple systems or technologies, such as combining a database operation, a web API call, and a sorting algorithm, to achieve a complex objective." %}
+{%- elif method == "optimization" -%}
+{% set modification_guideline = "Focus on optimizing an existing solution for better efficiency, readability, or scalability, aiming to cultivate a mindset geared towards refining and enhancing code beyond mere functional correctness." %}
+{%- elif method == "theoretical_application" -%}
+{% set modification_guideline = "Transform the prompt into a scenario requiring the application of theoretical computer science principles or mathematical concepts, pushing the boundaries of practical coding into theoretical application." %}
+{%- elif method == "security_emphasis" -%}
+{% set modification_guideline = "Include aspects of cybersecurity in the original question, such as implementing secure coding practices, identifying and mitigating vulnerabilities, or encrypting data within the task." %}
+{%- elif method == "concretizing" -%}
+{% set modification_guideline = "Complicate the given prompt by replacing general concepts with more specific ones, adding depth without making the prompt verbose, limited to an additional 10 to 20 words." %}
+{%- elif method == "misdirection" -%}
+{% set modification_guideline = "Increase the task's difficulty by providing a piece of erroneous code as a reference, adding misdirection to challenge the solver further." %}
+{%- elif method == "deepening" -%}
+{% set modification_guideline = "Enhance the prompt by increasing the depth and breadth of inquiry on certain issues, complicating the prompt reasonably within a 10 to 20 words limit." %}
+{%- elif method == "complexity" -%}
+{% set modification_guideline = "Propose higher time or space complexity requirements to increase the difficulty of the programming test question, but refrain from doing so frequently." %}
+{%- elif method == "reasoning" -%}
+{% set modification_guideline = "Rewrite the prompt to explicitly request multiple-step reasoning if it can be solved with just a few simple thinking processes, complicating it within a 10 to 20 words limit." %}
+{%- elif method == "increase" -%}
+{% set modification_guideline = "Replace a commonly used requirement in the programming task with a less common and more specific one to subtly increase the difficulty." %}
+{%- elif method == "addition" -%}
+{% set modification_guideline = "Add more reasoning steps if the original problem can be solved with only a few logical steps, increasing the challenge." %}
+{%- elif method == "breath" -%}
+{% set modification_guideline = "Draw inspiration from the given prompt to create a brand new, yet similarly complex, prompt in the same domain but more rare." %}
+{%- elif method == "diversion" -%}
+{% set modification_guideline = "Add new constraints and requirements to the original problem, enriching the challenge with approximately 10 additional words." %}
+{%- elif method == "language" -%}
+{% set modification_guideline = "Translate the prompt to another language while twisting the task nature to stay within the programming domain and propose higher complexity requirements sparingly." %}
+
+
+{%- endif -%}
+I want you to act as a Prompt Rewriter.
+Your objective is to rewrite a given prompt into a more complex version to make those famous AI systems (e.g., chatgpt and GPT4) a bit harder to handle.
+But the rewritten prompt must be reasonable and must be understood and responded by humans.
+Your rewriting cannot omit the non-text parts such as the table and code in #The Given Prompt#:. Also, please do not omit the input in #The Given Prompt#.
+You SHOULD complicate the given prompt using the following method:
+{{ depth_rewriter }}
+You should try your best not to make the #Rewritten Prompt# become verbose, #Rewritten Prompt# can only add 10 to 20 words into #The Given Prompt#.
+'#The Given Prompt#', '#Rewritten Prompt#', 'given prompt' and 'rewritten prompt' are not allowed to appear in #Rewritten Prompt#
+#The Given Prompt#:
+{{ instruction }}
+#Rewritten Prompt#:
+{% endif %}
