@@ -135,7 +135,7 @@ class CodeEvolInstructTask(InstructTaskMixin, TextGenerationTask):
         }
         return Prompt(
             system_prompt=self.system_prompt,
-            formatted_prompt=self.__jinja2_code_template__.render(**render_kwargs),
+            formatted_prompt=self.__jinja2_template__.render(**render_kwargs),
         )
     
 
