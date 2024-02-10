@@ -23,6 +23,7 @@ logger = get_logger()
 _CODE_EVOL_INSTRUCT_TEMPLATE = get_template("code-evol-instruct.jinja2")
 
 CodeEvolutionMethod = Literal[
+    "constraints",
     "breadth",
     "deepen",
     "concretizing",
