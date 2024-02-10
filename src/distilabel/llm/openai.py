@@ -117,7 +117,7 @@ class OpenAILLM(LLM):
 
         self.client = client or OpenAI(api_key=api_key, max_retries=6)
 
-        if (model not in self.available):
+        if (model not in self.available_models):
             print(f"Provided `model` ${model} is not available in your OpenAI account, available models are {self.available_models}")
         """  assert (
             model in self.available_models
