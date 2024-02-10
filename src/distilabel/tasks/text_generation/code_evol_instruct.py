@@ -1,3 +1,4 @@
+import sys
 from dataclasses import dataclass
 
 if sys.version_info < (3, 9):
