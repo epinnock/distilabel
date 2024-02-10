@@ -127,7 +127,7 @@ class CodeEvolInstructTask(InstructTaskMixin, TextGenerationTask):
             Prompt: The evolved code instruction prompt.
         """
         if evolution_method is None:
-            evolution_method = self._select_evolution_method(input)
+            evolution_method = self._select_evolution_method(evolution_method,CodeEvolutionMethod)
 
         render_kwargs = {
             "evol_method": evolution_method,
@@ -137,25 +137,23 @@ class CodeEvolInstructTask(InstructTaskMixin, TextGenerationTask):
             system_prompt=self.system_prompt,
             formatted_prompt=self.__jinja2_code_template__.render(**render_kwargs),
         )
+    
 
-    def _select_evolution_method(self, input: str) -> CodeEvolutionMethod:
-        """Dynamically selects an evolution method based on the input's content and context.
-
-        This selection process might involve analyzing the input to determine which aspect of code quality needs emphasis—be it readability, maintainability, scalability, or other.
-
-        Args:
-            input (str): The code instruction to evolve.
-
-        Returns:
-            CodeEvolutionMethod: The selected method for evolving the code instruction.
-        """
-        # This function's implementation would analyze the input and select the most appropriate evolution method.
-        # For simplicity, let's assume it randomly selects a method for now.
-        return random.choice(list(CodeEvolutionMethod))
+    def _select_evolution_method(
+        self, chosen_method: CodeEvolutionMethod, available_methods: CodeEvolutionMethod
+    ) -> None:
+        available_methods = get_args(available_methods)
+        if not chosen_method:
+            chosen_method = random.choice(available_methods)
+        if chosen_method not in available_methods:
+            raise ValueError(
+                f"Evolution method {chosen_method} is not available. Available ones are: {available_methods}"
+            )
+        return chosen_method
 
     @property
     def output_args_names(self) -> List[str]:
-        return ["evolved_instructions"]
+        return ["instructions"]
 
     def parse_output(self, output: str) -> Dict[str, List[str]]:
         """Parses the evolved instruction output from the model, ensuring it aligns with the desired code evolution principles.
