@@ -1,10 +1,22 @@
 from dataclasses import dataclass
-from typing import Any, Dict, List, Optional, Literal
 
+if sys.version_info < (3, 9):
+    import importlib_resources
+else:
+    import importlib.resources as importlib_resources
+
+import random
+import string
+
+from typing import Any, Dict, List, Literal, Optional, get_args
+
+from distilabel.logger import get_logger
+from distilabel.tasks.base import get_template
+from distilabel.tasks.prompt import Prompt
 from distilabel.tasks.text_generation.base import TextGenerationTask
 from distilabel.tasks.text_generation.mixins import InstructTaskMixin
-from distilabel.tasks.prompt import Prompt
-from distilabel.tasks.base import get_template
+
+logger = get_logger()
 
 
 _CODE_EVOL_INSTRUCT_TEMPLATE = get_template("code-evol-instruct.jinja2")

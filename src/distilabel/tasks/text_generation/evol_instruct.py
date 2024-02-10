@@ -34,12 +34,11 @@ logger = get_logger()
 
 
 _EVOL_INSTRUCT_TEMPLATE = get_template("evol-instruct.jinja2")
-
+_CODE_EVOL_INSTRUCT_TEMPLATE = get_template("code-evol-instruct.jinja2")
 
 EvolutionMethod = Literal[
     "breadth", "constraints", "deepen", "concretizing", "reasoning"
 ]
-
 
 def _get_stopwords() -> List[str]:
     """Gets the list of english stopwords from nltk package.
@@ -88,6 +87,7 @@ class EvolInstructTask(InstructTaskMixin, TextGenerationTask):
     system_prompt: str = ""
 
     __jinja2_template__: str = _EVOL_INSTRUCT_TEMPLATE
+
 
     def generate_prompt(
         self, input: str, evolution_method: Optional[EvolutionMethod] = None, **_: Any
