@@ -25,6 +25,7 @@ from distilabel.tasks.prompt import Prompt
 from distilabel.tasks.text_generation.base import TextGenerationTask
 from distilabel.tasks.text_generation.evol_complexity import EvolComplexityTask
 from distilabel.tasks.text_generation.evol_instruct import EvolInstructTask
+from distilabel.tasks.text_generation.code_evol_instruct import CodeEvolInstructTask
 from distilabel.tasks.text_generation.evol_quality import EvolQualityTask
 from distilabel.tasks.text_generation.self_instruct import SelfInstructTask
 
@@ -40,6 +41,7 @@ __all__ = [
     "TextGenerationTask",
     "SelfInstructTask",
     "EvolInstructTask",
+    "CodeEvolInstructTask",
     "EvolComplexityTask",
     "EvolQualityTask",
     "ComplexityScorerTask",
